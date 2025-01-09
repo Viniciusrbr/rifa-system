@@ -23,12 +23,12 @@ export default function NumbersList({ seller, onUpdate }: NumbersListProps) {
       .select('*')
       .eq('seller_id', seller.id)
       .order('number');
-    
+
     if (error) {
       toast.error('Error fetching numbers');
       return;
     }
-    
+
     setNumbers(data);
   };
 
@@ -82,8 +82,8 @@ export default function NumbersList({ seller, onUpdate }: NumbersListProps) {
     <div>
       <div className="flex justify-between items-center mb-4">
         <div>
-          <h2 className="text-lg font-semibold">Numbers for {seller.name}</h2>
-          <p className="text-sm text-gray-500">Contact: {seller.contact}</p>
+          <h2 className="text-lg font-semibold">Números de {seller.name}</h2>
+          <p className="text-sm text-gray-500">Contato: {seller.contact}</p>
         </div>
         <div className="flex gap-2">
           <select
@@ -91,9 +91,9 @@ export default function NumbersList({ seller, onUpdate }: NumbersListProps) {
             onChange={(e) => setFilter(e.target.value)}
             className="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           >
-            <option value="all">All Numbers</option>
-            <option value="sold">Sold</option>
-            <option value="unsold">Unsold</option>
+            <option value="all">Todos os números</option>
+            <option value="sold">Vendido</option>
+            <option value="unsold">Não Vendido</option>
           </select>
         </div>
       </div>
@@ -102,9 +102,8 @@ export default function NumbersList({ seller, onUpdate }: NumbersListProps) {
         {filteredNumbers.map((number) => (
           <div
             key={number.id}
-            className={`p-4 rounded-lg ${
-              number.is_sold ? 'bg-green-50' : 'bg-gray-50'
-            }`}
+            className={`p-4 rounded-lg ${number.is_sold ? 'bg-green-50' : 'bg-gray-50'
+              }`}
           >
             <div className="flex justify-between items-start">
               <span className="text-xl font-bold">#{number.number}</span>
@@ -119,15 +118,15 @@ export default function NumbersList({ seller, onUpdate }: NumbersListProps) {
             {number.is_sold ? (
               <div className="mt-2 space-y-1">
                 <p className="text-sm">
-                  <span className="font-medium">Buyer:</span> {number.buyer_name}
+                  <span className="font-medium">Comprador:</span> {number.buyer_name}
                 </p>
                 <p className="text-sm">
-                  <span className="font-medium">Contact:</span>{' '}
+                  <span className="font-medium">Contato:</span>{' '}
                   {number.buyer_contact}
                 </p>
               </div>
             ) : (
-              <p className="mt-2 text-sm text-gray-500">Available</p>
+              <p className="mt-2 text-sm text-gray-500">Disponível</p>
             )}
 
             {editingNumber?.id === number.id && (
@@ -155,7 +154,7 @@ function NumberEditForm({ number, onSave, onCancel }) {
       <div>
         <input
           type="text"
-          placeholder="Buyer's Name"
+          placeholder="Nome do comprador"
           className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           value={formData.buyerName}
           onChange={(e) =>
@@ -166,7 +165,7 @@ function NumberEditForm({ number, onSave, onCancel }) {
       <div>
         <input
           type="text"
-          placeholder="Buyer's Contact"
+          placeholder="Contato do comprador"
           className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           value={formData.buyerContact}
           onChange={(e) =>
@@ -178,14 +177,14 @@ function NumberEditForm({ number, onSave, onCancel }) {
         <button
           onClick={onCancel}
           className="p-2 text-gray-600 hover:text-gray-800 rounded-md"
-          title="Cancel"
+          title="Cancelar"
         >
           <X size={20} />
         </button>
         <button
           onClick={() => onSave(number, formData)}
           className="p-2 text-green-600 hover:text-green-800 rounded-md"
-          title="Save"
+          title="Salvar"
         >
           <Save size={20} />
         </button>

@@ -23,7 +23,7 @@ function App() {
       .order('name');
 
     if (error) {
-      toast.error('Error fetching sellers');
+      toast.error('Erro ao buscar vendedores');
       return;
     }
 
@@ -42,7 +42,7 @@ function App() {
       .eq('seller_id', seller.id);
 
     if (numbersError) {
-      toast.error('Error deleting seller numbers');
+      toast.error('Erro ao excluir números de vendedores');
       return;
     }
 

@@ -84,7 +84,7 @@ export default function SellerForm({ onClose, onSave, seller }: SellerFormProps)
           .lte('number', parseInt(formData.numberRange.end));
 
         if (existingNumbers?.length > 0) {
-          toast.error('Some numbers in this range are already assigned to other sellers');
+          toast.error('Alguns números neste intervalo já estão atribuídos a outros vendedores');
           return;
         }
 
@@ -115,12 +115,12 @@ export default function SellerForm({ onClose, onSave, seller }: SellerFormProps)
 
         if (numbersError) throw numbersError;
 
-        toast.success('Seller added successfully');
+        toast.success('Vendedor adicionado com sucesso');
       }
 
       onSave();
     } catch (error) {
-      toast.error(seller ? 'Error updating seller' : 'Error creating seller');
+      toast.error(seller ? 'Erro ao atualizar vendedor' : 'Erro ao criar vendedor');
       console.error(error);
     }
   };
@@ -162,7 +162,7 @@ export default function SellerForm({ onClose, onSave, seller }: SellerFormProps)
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              {seller ? 'New Number Range (optional)' : 'Numeros para Venda'}
+              {seller ? 'Novo intervalo de números (opcional)' : 'Numeros para Venda'}
             </label>
             <p className="text-sm text-gray-500 mb-2">
               {seller
