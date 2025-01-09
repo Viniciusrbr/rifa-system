@@ -53,11 +53,11 @@ function App() {
       .eq('id', seller.id);
 
     if (sellerError) {
-      toast.error('Error deleting seller');
+      toast.error('Erro ao excluir vendedor');
       return;
     }
 
-    toast.success('Seller deleted successfully');
+    toast.success('Vendedor excluído com sucesso');
     if (selectedSeller?.id === seller.id) {
       setSelectedSeller(null);
     }
